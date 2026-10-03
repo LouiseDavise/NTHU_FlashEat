@@ -45,7 +45,7 @@ export default function StreaksScreen() {
                 />
               ))}
             </View>
-            <Text className="text-sm text-muted">Best run: {bestStreak(h.done)} days · last 14 days</Text>
+            <Text className="text-sm text-muted">Best run: {bestStreak(h.done)} {bestStreak(h.done) === 1 ? 'day' : 'days'} · last 14 days</Text>
           </Card>
         );
       })}
