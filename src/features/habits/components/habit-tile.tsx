@@ -23,7 +23,7 @@ export function HabitTile({ habit, firedToday, onToggle, onRemove }: HabitTilePr
   const accentFg = useThemeColor('accent-foreground');
   const muted = useThemeColor('muted');
   const fill = useSharedValue(firedToday ? 1 : 0);
-  const glow = useSharedValue(0);
+  const glow = useSharedValue(1);
   const first = useRef(true);
   const streak = currentStreak(habit.done);
 
