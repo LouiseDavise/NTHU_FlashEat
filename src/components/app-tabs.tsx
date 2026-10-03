@@ -29,13 +29,13 @@ export default function AppTabs() {
   return (
     <NativeTabs backgroundColor={colors.background} tintColor={accent}>
       <NativeTabs.Trigger name="index" disableAutomaticContentInsets>
-        <NativeTabs.Trigger.Label>Today</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="flame.fill" md="local_fire_department" />
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="streaks" disableAutomaticContentInsets>
-        <NativeTabs.Trigger.Label>Streaks</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="chart.bar.fill" md="bar_chart" />
+      <NativeTabs.Trigger name="explore" disableAutomaticContentInsets>
+        <NativeTabs.Trigger.Label>Explore</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="safari.fill" md="explore" />
       </NativeTabs.Trigger>
     </NativeTabs>
   );
