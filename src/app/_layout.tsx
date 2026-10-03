@@ -1,9 +1,9 @@
 import '@/global.css';
 
 import Constants from 'expo-constants';
-import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
+import { DefaultTheme, Stack, ThemeProvider } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { HeroUINativeProvider } from 'heroui-native';
-import { useColorScheme } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Newly } from '@newly/sdk-react-native';
@@ -74,22 +74,16 @@ if (analytics.enabled !== false && newlyIngestKey && newlyApiUrl) {
 // pre-baked into the scaffold (along with MMKV for persistence and Skia for charts) so the
 // native module set is fixed up front and screen work hot-reloads without a native rebuild.
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <KeyboardProvider>
         <HeroUINativeProvider>
-          <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <ThemeProvider value={DefaultTheme}>
             {/* ThemeSwitchHost is always mounted (zero cost when unused) so any theme
                 toggle switches via useThemeSwitch() and the circular reveal plays. */}
             <ThemeSwitchHost>
-              {/* The scaffold boots straight into src/app/index.tsx (the Newly welcome
-                  screen), no tab bar. src/components/app-tabs.tsx is the NativeTabs
-                  reference: when the app has tab routes, render <AppTabs /> here
-                  instead of <Slot /> (explore.tsx is its second tab). */}
-              <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="new" options={{ presentation: 'formSheet', sheetAllowedDetents: [0.55, 0.85], sheetGrabberVisible: true }} />
-              </Stack>
+              <StatusBar style="light" />
+              <Stack screenOptions={{ headerShown: false }} />
             </ThemeSwitchHost>
           </ThemeProvider>
         </HeroUINativeProvider>

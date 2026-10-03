@@ -1,3 +1,66 @@
+# NTHU FlashEat: product brief and rules
+
+FlashEat lets NTHU students, faculty and campus guests pre-order lunch from campus cafeteria stalls
+(小吃部, 水木生活中心, 風雲樓), pick a 5-minute pickup slot (12:00–12:55, max 8 orders per stall per
+slot), pay (mock), then grab the meal from the stall's pickup shelf and show a 4-digit code. Stall staff
+(tenants) see a phone-sized kitchen queue and verify pickups with a simulated security gate.
+Slogan: "Order on the way to class. Grab & go in seconds." / 上課途中先點餐，取餐只要幾秒。
+One device, one app: Customer and Tenant run in the same app. Demo clock is fixed at 11:45.
+
+## Scope (MoSCoW): build order is MUST, then SHOULD, then COULD. Never leave a MUST half-done.
+
+MUST: welcome/role select (Student/Faculty, Guest, Tenant; fake logins), switch role from every screen,
+local persistence + Reset demo data, fixed 11:45 clock, Live Crowd Map, stall list, menu with stepper and
+cart, 5-minute slots with Full handling, mock checkout, My order (tracker, QR, 4-digit code), tenant queue
+(New / Preparing / Ready on Shelf, auto shelf spots), customer "on Shelf" banner, Pickup check with four
+results, EN / 繁體中文 toggle, design system.
+SHOULD: animations (slot select, VERIFIED pop, ALARM pulse, banner slide-in), Active order card, tab counts,
+empty/loading states, prep time + line wait on stall cards, reset confirmation.
+COULD: order note, Sold out badge, tenant Today summary, Order again.
+
+## WON'T (do not build, no placeholders)
+
+- Real payments or gateways (TapPay, LINE Pay API, Stripe, Apple Pay SDK), RevenueCat, in-app purchases
+- Real sign-in, accounts, ID verification, NTHU student database, student ID / EasyCard tap
+- Backend, server, cloud database, multi-device sync (everything is faked locally on one device)
+- Push notifications (in-app banners instead)
+- Camera or QR scanning, thermal printers, RFID, physical gates, alarm hardware, theft camera snapshots
+- Food-label + customer-code dual matching ("wrong item" check), security admin dashboard
+- AI features of any kind
+- Live crowd data, maps, GPS, delivery
+- Order history list, order cancellation, refunds, ratings, reviews, chat with the stall
+- Tenant menu editing, tablet or landscape layouts, dark mode
+- The official NTHU emblem or any brand logos
+
+## Design system
+
+- Feel: clean, trustworthy NTHU campus app. White, NTHU purple, black.
+- Colors: primary #5E2B8C, pressed #4A2170, light surface #F4EFF9, heat scale #EDE4F5 / #C9B3E0 / #9C77C9 / #5E2B8C,
+  background #FFFFFF, text #111111, secondary text #6B6B6B, dividers #E6E6E6. All live as tokens in src/global.css.
+- Status colors only for meaning: green #16A34A (verified, ready, slots available), amber #F59E0B (preparing,
+  1 left, not ready), red #DC2626 (full, alarm).
+- Type: system font only. 28 screen title bold / 22 section title bold / 17 emphasis semibold / 15 body /
+  13 caption (tokens text-title, text-section, text-emph, text-body, text-caption). Pickup code 48 bold, letter-spaced (text-code).
+- Spacing 4/8/12/16/24/32, screen padding 16, card radius 16, button radius 12, chip radius 999.
+- Header: solid purple band, white "FlashEat" wordmark, "11:45 Demo" clock, "EN | 中" toggle, "Switch role", gear.
+- Buttons: primary solid purple/white text; secondary white with purple border and purple text. Min height 48.
+- No gradients, no emoji as icons or bullets, no rows of three identical cards, no stock hero sections. Simple line icons only.
+- Light only. Different screens use different layouts; follow each screen's description.
+- App icon: white lightning bolt over a rice bowl on NTHU purple.
+
+## Engineering rules
+
+- Scope discipline: when a later message asks to change one thing, change only that thing. Never restyle or
+  restructure other screens unless asked.
+- One screen per file, one reusable component per file. Design tokens (src/global.css), translations
+  (src/i18n/translations.ts), seed data (src/features/flasheat/data/seed.ts) and storage (src/lib/storage.ts +
+  the flasheat store) each live in their own file.
+- All UI text comes from the translations file (EN + 繁體中文). No hard-coded strings in screens.
+- Accessibility: tap targets at least 44pt, WCAG AA contrast, every icon button has an accessibility label.
+- Persistence is MMKV through zustand. No new native packages (pure-JS libraries only, e.g. qrcode-generator).
+
+---
+
 # How this app is built
 
 This is a **newly** app: a native-feeling Expo (React Native) app built from a fixed

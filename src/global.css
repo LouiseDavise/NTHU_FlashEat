@@ -19,41 +19,85 @@
  * design/DESIGN.md for the identity this encodes.
  * ════════════════════════════════════════════════════════════════════════════ */
 
-/* @newly:tokens:start — the lock_design step and the refine path rewrite EVERYTHING
- * between these markers. Hand-edits here are allowed but will be replaced on refine. */
-
-/* Brand accent (primary action color), per color scheme. OKLCH like HeroUI.
- * The scaffold default is Newly pink (the app icon's magenta) so the Welcome
- * screen is on-brand out of the box; lock_design replaces it with the app's own. */
+/* @newly:tokens:start */
 @layer theme {
   :root {
     @variant light {
-      --background: oklch(0.955 0.012 80);
-      --foreground: oklch(0.22 0.01 50);
-      --surface: oklch(0.985 0.006 80);
-      --surface-foreground: oklch(0.22 0.01 50);
-      --muted: oklch(0.52 0.015 60);
-      --border: oklch(0.89 0.012 75);
-      --accent: oklch(0.66 0.2 40);
-      --accent-foreground: oklch(0.99 0 0);
+      --background: #ffffff;
+      --foreground: #111111;
+      --surface: #ffffff;
+      --surface-foreground: #111111;
+      --surface-secondary: #f4eff9;
+      --surface-tertiary: #ede4f5;
+      --overlay: #ffffff;
+      --overlay-foreground: #111111;
+      --muted: #6b6b6b;
+      --border: #e6e6e6;
+      --separator: #e6e6e6;
+      --default: #f4eff9;
+      --default-foreground: #111111;
+      --field-background: #ffffff;
+      --field-foreground: #111111;
+      --field-placeholder: #6b6b6b;
+      --accent: #5e2b8c;
+      --accent-foreground: #ffffff;
+      --success: #16a34a;
+      --success-foreground: #ffffff;
+      --warning: #f59e0b;
+      --warning-foreground: #111111;
+      --danger: #dc2626;
+      --danger-foreground: #ffffff;
     }
     @variant dark {
-      --background: oklch(0.18 0.006 50);
-      --foreground: oklch(0.94 0.012 80);
-      --surface: oklch(0.235 0.008 50);
-      --surface-foreground: oklch(0.94 0.012 80);
-      --muted: oklch(0.7 0.02 70);
-      --border: oklch(0.3 0.01 50);
-      --accent: oklch(0.72 0.19 45);
-      --accent-foreground: oklch(0.16 0 0);
+      --background: #ffffff;
+      --foreground: #111111;
+      --surface: #ffffff;
+      --surface-foreground: #111111;
+      --surface-secondary: #f4eff9;
+      --surface-tertiary: #ede4f5;
+      --overlay: #ffffff;
+      --overlay-foreground: #111111;
+      --muted: #6b6b6b;
+      --border: #e6e6e6;
+      --separator: #e6e6e6;
+      --default: #f4eff9;
+      --default-foreground: #111111;
+      --field-background: #ffffff;
+      --field-foreground: #111111;
+      --field-placeholder: #6b6b6b;
+      --accent: #5e2b8c;
+      --accent-foreground: #ffffff;
+      --success: #16a34a;
+      --success-foreground: #ffffff;
+      --warning: #f59e0b;
+      --warning-foreground: #111111;
+      --danger: #dc2626;
+      --danger-foreground: #ffffff;
     }
   }
 }
 
-/* Base corner radius — the DENSITY dial's lever. Every rounded-* utility derives
- * from this (HeroUI: --radius-2xl = --radius * 2, etc.). Larger = softer/cozier. */
 @theme {
-  --radius: 0.75rem;
+  --radius: 0.5rem;
+  --color-pressed: #4a2170;
+  --color-lilac: #f4eff9;
+  --color-heat-1: #ede4f5;
+  --color-heat-2: #c9b3e0;
+  --color-heat-3: #9c77c9;
+  --color-heat-4: #5e2b8c;
+  --color-lilac-text: #d9c8ec;
+  --text-title: 28px;
+  --text-title--line-height: 34px;
+  --text-section: 22px;
+  --text-section--line-height: 28px;
+  --text-emph: 17px;
+  --text-emph--line-height: 22px;
+  --text-body: 15px;
+  --text-body--line-height: 20px;
+  --text-caption: 13px;
+  --text-caption--line-height: 18px;
+  --text-code: 48px;
+  --text-code--line-height: 56px;
 }
 /* @newly:tokens:end */
 
