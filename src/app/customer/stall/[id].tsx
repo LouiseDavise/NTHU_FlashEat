@@ -1,5 +1,5 @@
 import { Redirect, useLocalSearchParams, useRouter, type Href } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
 import { ActionButton } from '@/components/action-button';
@@ -25,10 +25,16 @@ export default function StallMenuScreen() {
   const bookings = useFlashEatStore((s) => s.bookings);
   const cart = useCartStore();
   const [fullTime, setFullTime] = useState<string | null>(null);
-
   const stall = STALLS.find((s) => s.id === id);
+  const stallKey = stall?.id;
+  const startStall = cart.startStall;
+  const cartStallId = cart.stallId;
+
+  useEffect(() => {
+    if (stallKey && cartStallId !== stallKey) startStall(stallKey);
+  }, [stallKey, cartStallId, startStall]);
+
   if (!stall) return <Redirect href={'/customer' as Href} />;
-  if (cart.stallId !== stall.id) cart.startStall(stall.id);
 
   const names = nameOf(stall);
   const menu = MENU_ITEMS.filter((m) => m.stallId === stall.id);
