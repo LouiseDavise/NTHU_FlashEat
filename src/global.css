@@ -28,11 +28,23 @@
 @layer theme {
   :root {
     @variant light {
-      --accent: oklch(0.66 0.26 325);
+      --background: oklch(0.955 0.012 80);
+      --foreground: oklch(0.22 0.01 50);
+      --surface: oklch(0.985 0.006 80);
+      --surface-foreground: oklch(0.22 0.01 50);
+      --muted: oklch(0.52 0.015 60);
+      --border: oklch(0.89 0.012 75);
+      --accent: oklch(0.66 0.2 40);
       --accent-foreground: oklch(0.99 0 0);
     }
     @variant dark {
-      --accent: oklch(0.72 0.22 325);
+      --background: oklch(0.18 0.006 50);
+      --foreground: oklch(0.94 0.012 80);
+      --surface: oklch(0.235 0.008 50);
+      --surface-foreground: oklch(0.94 0.012 80);
+      --muted: oklch(0.7 0.02 70);
+      --border: oklch(0.3 0.01 50);
+      --accent: oklch(0.72 0.19 45);
       --accent-foreground: oklch(0.16 0 0);
     }
   }

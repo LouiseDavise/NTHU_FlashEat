@@ -1,53 +1,36 @@
-# Design spec (locked)
+# Kiln — design plan
 
-> This file is the app's locked visual identity. The infer/plan step writes it
-> before the build; the build reads it and may not contradict it; the refine path
-> updates it. Screens are built from the **tokens** (`src/global.css`) and the
-> **HeroUI Native** component library — never improvised per screen.
+**Subject:** a daily habit tracker. **Who:** people building small routines, checking in one-handed, mostly morning and evening. **Core action:** tap a habit to "fire" it for today. **Moment:** quick, glanceable, satisfying.
 
-## Identity
+## Directions
+1. Paper and ink: off-white, black serif, hairlines. Quiet, but reads as a notes app.
+2. Pastel sticker sheet: playful chips. Reads as every habit app.
+3. **Kiln (chosen):** charcoal ash and glowing ember. Habits are pieces in a kiln; a check-in "fires" them. Chosen because the metaphor gives the color, the words and the signature moment.
 
-- **Vibe:** _(e.g. calm, premium, playful, editorial)_ — clean & modern (default)
-- **Mode:** light + dark (system)
-- **Accent:** Newly pink (the scaffold default) — `--accent` in `src/global.css`
-- **Shape:** soft, `--radius: 0.75rem` (cozy)
-- **Type:** system font (SF Pro on iOS, Roboto on Android); no custom display font
+## Palette (tokens in src/global.css)
+- Ash (background): dark `#1C1917`, light `#F3EFE9`
+- Clay (surface): dark `#272220`, light `#FBF9F5`
+- Bone (foreground): dark `#F2ECE2`, light `#231D1A`
+- Smoke (muted text): warm grey
+- Ember (accent): `#F2611D` light / brighter in dark
+- Glaze (future use): deep teal
+
+## Type
+System font. Big rounded numerals for streaks (font-rounded, bold), sentence-case labels, no all-caps.
+
+## Shell
+```
+Today | Streaks      (native tab bar, content scrolls under)
+```
+Today: large title + date, "2 of 4 fired" line, then one tall tile per habit: ember disc on the left (ring when cold, filled with flame when fired), name, streak on the right. Add button in a header row.
+Streaks: per-habit card with current and best streak and a 14-day strip of small squares (lit = ember).
+New habit: form sheet with name field and icon picker.
+
+## Signature moment
+Tapping a disc fires it: the ember fills outward from the center, a glow ring expands and fades, success haptic. Firing the last habit of the day shows a "Kiln is full" banner with one more success haptic.
 
 ## Dials
+Motion standard (timing only), variance low, density cozy.
 
-See `design/dials.json`. These three dials set the overall feel:
-
-- **variance** — `low | medium | high`: how much screens may differ from one
-  another. `low` = strong consistency (every screen shares the same rhythm and
-  components); `high` = each screen can have a distinct hero treatment.
-- **motion** — `calm | standard | lively`: animation intensity. `calm` =
-  minimal, quick fades; `lively` = springy transitions, playful micro-interactions.
-- **density** — `compact | cozy | spacious`: spacing + radius rhythm. Drives the
-  base `--radius` and the default padding/gap scale used across screens.
-
-Defaults: variance `low`, motion `standard`, density `cozy`.
-
-## Screens
-
-> The infer/plan step lists the screens to build here (one bullet each, with the
-> key sections per screen). The build implements exactly these.
->
-> The scaffold boots into `src/app/index.tsx`, the Newly welcome screen (tap the
-> icon, it rains icons). It is the brand placeholder the build REPLACES, never a
-> pattern to extend. The welcome screen's modules are the vendored npm package
-> `@newly/welcome` (`node_modules/@newly/welcome`); the build must NOT edit or
-> delete that package — it replaces the screen by rewriting `src/app/index.tsx`
-> and dropping the `@newly/welcome` import. `explore.tsx` stays as the reference
-> screen for Section / Card / ListRow / Segmented / confirmDelete. Replace this
-> list with the app's real screens.
-
-- Welcome (placeholder — replaced by the build)
-- Explore (reference screen; not in the tab bar until the app has tabs)
-
-## Anti-slop reminders
-
-- Tokens only — no raw hex, no magic spacing numbers in components.
-- HeroUI Native components + Uniwind `className`; StyleSheet only for native-only
-  surfaces (NativeTabs, `@expo/ui`, glass).
-- Native feel: system font, 44pt touch targets, SF Symbols (not emoji) for icons,
-  haptics on key actions, respect safe areas.
+## Unmistakable because
+The tracker speaks in kiln words (fire, cold, lit) and glows ember on warm charcoal instead of ticking boxes on white.

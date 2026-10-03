@@ -1,6 +1,6 @@
 {
-  "ingestKey": "",
-  "apiUrl": "",
-  "enabled": true,
-  "samplingRate": null
+  "ingestKey": "niak_EJnDPnLZAPRbAbFOF3-RGDEyGlIYg-rZ",
+  "apiUrl": "https://api.newly.app",
+  "enabled": false,
+  "samplingRate": 1
 }
